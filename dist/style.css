@@ -38,8 +38,22 @@ html, body
 	align-items: center;
 }
 
-#current-weather > h1
+.temp, .wind, .humidity
 {
+	font-family: "Roboto Condensed";
+	font-weight: 500;
+}
+
+.unit
+{
+	color: hsl(28, 96%, 60%);
+	font-family: "B612";
+}
+
+#current-weather > #city
+{
+	font-family: "Ubuntu";
+
 	margin: 0;
 }
 
@@ -58,7 +72,7 @@ html, body
 	font-size: 5em;
 }
 
-#current-temp, #current-wind
+#current-temp, #current-wind, #current-humidity
 {
 	width: 100%;
 
@@ -101,4 +115,9 @@ html, body
 #right-section
 {
 	background: white;
+}
+
+@font-face {
+	font-family: "Luthfya";
+	src: url(./fonts/luthfya.regular.ttf);
 }
