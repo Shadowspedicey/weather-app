@@ -2,11 +2,32 @@
 <html lang="en">
 	<head>
 		<title>Weather App</title>
+
+		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
 		<div id="content">
-			
+			<div id="weather-box">
+				<div id="current-weather" class="weather-section">
+					<h1 id="city">Alexandria</h1>
+					<div id="current-temp">
+						<div class="weather-icon"><img src="weather-icons/unknown.png" alt="Weather Icon"></div>
+						<div class="temp-box">
+							<h2 class="temp">50</h2>
+							<h2 class="unit">C</h2>
+						</div>
+					</div>
+					<div style="width: 100%"><h3>Wind</h3>
+					<div id="current-wind">
+						<h2 class="wind" style="font-size: 3em">50</h2>
+						<h2 class="unit" style="font-size: 3.5em">km/h</h2>
+					</div></div>
+					<div><h3>Humidity</h3>
+					<div id="current-humidity"><h2 style="font-size: 3em">50%</h2></div>
+				</div></div>
+				<div id="right-section" class="weather-section"></div>
+			</div>
 		</div>
-		<script src="./main.js"></script>
+		<script src="main.js"></script>
 	</body>
 </html>

@@ -1,4 +1,104 @@
 html, body
 {
 	margin: 0;
+	height: 100vh;
+}
+
+#content
+{
+	height: 100%;
+	background: url(https://media.istockphoto.com/photos/fluffy-clouds-hd-seamless-tiles-pattern-01-picture-id938695332?k=6&m=938695332&s=612x612&w=0&h=AIfTLaiovcoBKdVlqW-S9f0-RzWiHQ1AzCH0OZ7FJN0=);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#weather-box
+{
+	width: 1000px;
+	height: 550px;
+	background: linear-gradient(to right, hsl(208, 96%, 95%), hsl(208, 96%, 85%), hsl(208, 96%, 95%));
+
+	overflow: hidden;
+
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 2fr;
+
+	box-shadow: 0 0 20px 5px black;
+	border-radius: 20px;
+}
+
+#current-weather
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+#current-weather > h1
+{
+	margin: 0;
+}
+
+#current-weather h2, h3
+{
+	margin: 0;
+}
+
+#current-weather h3
+{
+	text-align: center;
+}
+
+#city
+{
+	font-size: 5em;
+}
+
+#current-temp, #current-wind
+{
+	width: 100%;
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+
+#current-temp .weather-icon img
+{
+	height: 6rem;
+}
+
+.temp-box
+{
+	display: flex;
+	align-items: center;
+
+	position: relative;
+}
+
+.temp-box .temp
+{
+	font-size: 3em;
+}
+
+.temp-box .unit
+{
+	position: absolute;
+	top: -1rem;
+	right: -1rem;
+}
+
+#current-wind
+{
+	display: flex;
+}
+
+#right-section
+{
+	background: white;
 }
