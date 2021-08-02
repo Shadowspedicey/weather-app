@@ -24,7 +24,7 @@ html, body
 	overflow: hidden;
 
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) 2fr;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 
 	box-shadow: 0 0 20px 5px black;
 	border-radius: 20px;
@@ -64,6 +64,7 @@ html, body
 
 #current-weather h3
 {
+	font-family: monospace;
 	text-align: center;
 }
 
@@ -95,16 +96,16 @@ html, body
 	position: relative;
 }
 
-.temp-box .temp
+#current-weather .temp-box .temp
 {
-	font-size: 3em;
+	font-size: 3.5em;
 }
 
 .temp-box .unit
 {
 	position: absolute;
-	top: -1rem;
-	right: -1rem;
+	top: -0.5rem;
+	right: -0.5rem;
 }
 
 #current-wind
@@ -114,7 +115,98 @@ html, body
 
 #right-section
 {
-	background: white;
+	display: grid;
+	grid-template-columns: repeat(8, minmax(0, 1fr));
+	grid-template-rows: 1fr;
+
+	position: relative;
+}
+
+#right-section::before
+{
+	content: "";
+
+	width: 1px;
+	height: 90%;
+	background: black;
+
+	transform: translateY(-50%);
+
+	position: absolute;
+	top: 50%;
+}
+
+.day-column
+{
+	height: 100%;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.day-info
+{
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.day-icon img
+{
+	width: 100%;
+}
+
+.day-temp
+{
+	width: 100%;
+	height: 7.5rem;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+
+	padding-left: 0.5rem;
+}
+
+.day-temp::before
+{
+	content: "";
+
+	width: 100%;
+	height: 1px;
+	background: black;
+
+	position: absolute;
+	top: -0.75rem;
+	left: 0;
+}
+
+.minmax-temp
+{
+	display: flex;
+	align-items: center;
+}
+
+.minmax-temp h4
+{
+	font-size: 0.75em;
+	margin-right: 0.4rem;
+}
+
+.minmax-temp .temp-box .temp
+{
+	font-size: 2.25em;
 }
 
 @font-face {
