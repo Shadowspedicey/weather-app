@@ -114,7 +114,7 @@ html, body
 	display: flex;
 }
 
-#right-section
+#forecast
 {
 	display: grid;
 	grid-template-columns: repeat(8, minmax(0, 1fr));
@@ -123,7 +123,7 @@ html, body
 	position: relative;
 }
 
-#right-section::before
+#forecast::before
 {
 	content: "";
 
@@ -235,4 +235,41 @@ html, body
 @font-face {
 	font-family: "Luthfya";
 	src: url(./fonts/luthfya.regular.ttf);
+}
+
+@media (max-device-width: 500px)
+{
+	#weather-box
+	{
+		width: 750px;
+		height: 1250px;
+
+		grid-template-columns: initial;
+		grid-template-rows: minmax(0, 1fr) minmax(0, 1.5fr);
+	}
+
+	#current-weather > span
+	{
+		width: min-content !important;
+	}
+
+	#current-temp
+	{
+		margin-right: 2rem;
+	}
+
+	#forecast::before
+	{
+		content: "";
+
+		width: 90%;
+		height: 1px;
+		background: black;
+
+		transform: translateX(50%);
+
+		position: absolute;
+		top: 2rem;
+		right: 50%;
+	}
 }
