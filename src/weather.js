@@ -15,9 +15,19 @@ const Weather = (() =>
 		{
 			fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${_location.coords.latitude}&lon=${_location.coords.longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=f49e171463b5cd51a79e76a3a37d883e`, {mode: "cors"})
 				.then(response => response.json()).then(resolve, reject);
-		});	};
+		});	
+	};
+	
+	const LocationCurrentInfoName = async _location =>
+	{
+		return await new Promise((resolve, reject) =>
+		{
+			fetch(`https://api.openweathermap.org/data/2.5/weather?q=${_location}&units=metric&appid=f49e171463b5cd51a79e76a3a37d883e`, {mode: "cors"})
+				.then(response => response.json()).then(resolve, reject);
+		});	
+	};
 
-	return { LocationCurrentInfoCoords, LocationForecastInfoCoords };
+	return { LocationCurrentInfoCoords, LocationForecastInfoCoords, LocationCurrentInfoName };
 })();
 
 // 7 Days forecast

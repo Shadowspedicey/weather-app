@@ -15,7 +15,10 @@ const Getter = (() =>
 			userLocation = await GetLocation();
 		} catch (err)
 		{
-			if (err.message === "User denied Geolocation") return alert("Whatever, cunt");
+			if (err.message === "User denied Geolocation")
+			{
+				return GetCityByInput();
+			}
 		}
 		return Weather.LocationCurrentInfoCoords(userLocation);
 	};
@@ -28,17 +31,36 @@ const Getter = (() =>
 			userLocation = await GetLocation();
 		} catch (err)
 		{
-			if (err.message === "User denied Geolocation") return alert("Whatever, cunt");
+			if (err.message === "User denied Geolocation") return null;
 		}
 		return Weather.LocationForecastInfoCoords(userLocation);
 	};
+
+	async function GetCityByInput()
+	{
+		const input = prompt("What location do you want to see then?");
+		const weather = await Weather.LocationCurrentInfoName(input);
+		if (weather.message) return GetCityByInput();
+		else return weather;
+	}
 
 	return { GetCurrentWeather, GetForecast };
 })();
 
 const Interface = (() =>
 {
-	const DisplayCurrentWeather = async () =>
+	const DisplayWeather = async () =>
+	{
+		const currentWeather = await Getter.GetCurrentWeather();
+		let forecast = await Getter.GetForecast();
+		if (forecast == null) 
+			forecast = await Weather.LocationForecastInfoCoords({"coords": {"latitude": currentWeather.coord.lat, "longitude": currentWeather.coord.lon}});
+
+		DisplayCurrentWeather(currentWeather);
+		DisplayForecast(forecast);
+	};
+
+	const DisplayCurrentWeather = async (currentWeather) =>
 	{
 		const city = document.querySelector("#city");
 		const currentIcon = document.querySelector("#current-temp .weather-icon img");
@@ -46,8 +68,8 @@ const Interface = (() =>
 		const currentWind = document.querySelector("#current-wind .wind");
 		const currentHumidity = document.querySelector("#current-humidity .humidity");
 	
-		const currentWeather = await Getter.GetCurrentWeather();
 		console.log(currentWeather);
+		if (currentWeather == null) return;
 
 		city.textContent = currentWeather.name;
 		fitText(10, city.parentElement, city);
@@ -60,12 +82,9 @@ const Interface = (() =>
 		currentHumidity.textContent = currentWeather.main.humidity;
 	};
 
-	const DisplayForecast = async () =>
+	const DisplayForecast = async (forecast) =>
 	{
 		const daysDOM = document.querySelectorAll(".day-column");
-		const forecast = await Getter.GetForecast();
-		console.log(forecast);
-
 		for (let i = 0; i < daysDOM.length; i++)
 		{
 			let dayName = daysDOM[i].querySelector(".day");
@@ -82,8 +101,7 @@ const Interface = (() =>
 		}
 	};
 	
-	return { DisplayCurrentWeather, DisplayForecast };
+	return { DisplayWeather };
 })();
 
-Interface.DisplayCurrentWeather();
-Interface.DisplayForecast();
+Interface.DisplayWeather();
