@@ -1,11 +1,15 @@
+import helper from "./helper.js";
+
 const domManager = (() => {
 	let info;
 	const briefEl = document.querySelector("#brief");
 	const dayForecastEl = document.querySelector("#day-forecast");
+	const weekForecastEl = document.querySelector("#week-forecast");
 	function renderInfo(_info) {
 		info = _info;
 		renderBrief();
 		renderDayForecast();
+		renderWeekForecast();
 	}
 
 	function renderBrief() {
@@ -37,9 +41,17 @@ const domManager = (() => {
 					hourInfo.hour12format = hourInfo.hour - 12;
 				}
 			}
-			e.querySelector("h4").textContent = hourInfo.hour12format + ending;
+			e.querySelector("h4").textContent = i == 0 ? "Now" : hourInfo.hour12format + ending;
 			e.querySelector("img").src = `../icons/${info.days[hourInfo.day].hours[hourInfo.hour].icon}.svg`
 			e.querySelector(".degree").textContent = info.days[hourInfo.day].hours[hourInfo.hour].temp;
+		});
+	}
+	function renderWeekForecast() {
+		weekForecastEl.querySelectorAll(".day").forEach((e, i) => {
+			const dayName = i == 0 ? "Today" : helper.getDayName(helper.addDays(new Date(), i));
+			e.querySelector("h4").textContent = dayName;
+			e.querySelector("img").src = `../icons/${info.days[i].icon}.svg`;
+			e.querySelector("p").textContent = info.days[i].temp;
 		});
 	}
 
