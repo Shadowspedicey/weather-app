@@ -20,20 +20,26 @@ const domManager = (() => {
 		const timetable = dayForecastEl.querySelector(".timetable");
 		timetable.querySelectorAll(".hour").forEach((e, i) => {
 			let ending = "AM";
-			let hour = +currentHour + i;
-			e.querySelector(".degree").textContent = info.days[0].hours[hour].temp;
-			if (hour >= 12) {
-				ending = "PM";
-				if (hour > 12) {
-					hour -= 12;
-				}
-			} else if (hour >= 24) {
+			const hourInfo = {
+				hour: +currentHour + i,
+				hour12format: +currentHour + i,
+				day: 0
+			};
+			if (hourInfo.hour >= 24) {
 				ending = "AM";
-				hour -= 24;
-				if (hour == 0)
-					hour = 12;
+				hourInfo.hour -= 24;
+				hourInfo.day = 1;
+				if (hourInfo.hour == 0)
+					hourInfo.hour12format = 12;
+			} else if (hourInfo.hour >= 12) {
+				ending = "PM";
+				if (hourInfo.hour > 12) {
+					hourInfo.hour12format = hourInfo.hour - 12;
+				}
 			}
-			e.querySelector("h4").textContent = hour + ending;
+			e.querySelector("h4").textContent = hourInfo.hour12format + ending;
+			e.querySelector("img").src = `../icons/${info.days[hourInfo.day].hours[hourInfo.hour].icon}.svg`
+			e.querySelector(".degree").textContent = info.days[hourInfo.day].hours[hourInfo.hour].temp;
 		});
 	}
 
