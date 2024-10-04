@@ -109,7 +109,7 @@ main {
 	flex: 1;
 }
 
-svg {
+img {
 	height: 40px;
 	width: auto;
 }
@@ -165,6 +165,6 @@ svg {
 	gap: 4rem;
 }
 
-#week-forecast .timetable svg {
+#week-forecast .timetable img {
 	padding: 0.25rem 0;
 }
