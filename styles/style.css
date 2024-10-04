@@ -44,3 +44,72 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
 	isolation: isolate;
 }
+
+body {
+	font-size: 20px;
+}
+
+
+main {
+	background: url("https://img.freepik.com/premium-vector/sky-clouds-design-with-flat-cartoon-poster-flyers-postcards-web-banners_771576-58.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	font-family: 'Calibri';
+
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#brief > * {
+	width: fit-content;
+	margin: 0 auto;
+}
+
+#day-forecast {
+	background-color: #4272ad63;
+	color: white;
+
+	padding: 0.75rem;
+	border-radius: 10px;
+}
+
+#day-forecast h3 {
+	font-size: 1rem;
+	letter-spacing: 1px;
+	font-weight: lighter;
+
+	border-bottom: 1px rgba(255, 255, 255, 0.315) solid;
+}
+
+#day-forecast .timetable
+{
+	display: flex;
+	gap: 1.25rem;
+}
+
+#day-forecast .hour {
+	flex: 1;
+}
+
+#day-forecast .hour svg {
+	height: 40px;
+	width: auto;
+}
+
+#day-forecast .hour > *{
+	width: fit-content;
+	margin: 0 auto;
+}
+
+#week-forecast {
+}
+
+#week-forecast .timetable {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
