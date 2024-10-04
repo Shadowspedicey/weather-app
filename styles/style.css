@@ -160,6 +160,7 @@ img {
 }
 
 #week-forecast .timetable .day span {
+	width: 40%;
 	display: flex;
 	align-items: center;
 	gap: 4rem;
