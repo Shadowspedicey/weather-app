@@ -46,22 +46,24 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
+	background: url("https://img.freepik.com/premium-vector/sky-clouds-design-with-flat-cartoon-poster-flyers-postcards-web-banners_771576-58.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	
 	font-size: 20px;
+	font-family: 'Calibri';
 }
 
 
 main {
-	background: url("https://img.freepik.com/premium-vector/sky-clouds-design-with-flat-cartoon-poster-flyers-postcards-web-banners_771576-58.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-
-	font-family: 'Calibri';
-
 	height: 100vh;
+	width: fit-content;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 1rem;
+	margin: 0 auto;
 }
 
 #brief > * {
@@ -72,7 +74,6 @@ main {
 #day-forecast {
 	background-color: #4272ad63;
 	color: white;
-
 	padding: 0.75rem;
 	border-radius: 10px;
 }
@@ -95,7 +96,7 @@ main {
 	flex: 1;
 }
 
-#day-forecast .hour svg {
+svg {
 	height: 40px;
 	width: auto;
 }
@@ -106,10 +107,51 @@ main {
 }
 
 #week-forecast {
+	width: 100%;
+	color: white;
+}
+
+#week-forecast h3 {
+	color: rgb(190, 239, 255);
+	font-weight: lighter;
+	font-style: italic;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	padding-top: 5px;
 }
 
 #week-forecast .timetable {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+}
+
+#week-forecast .timetable .day,
+#week-forecast h3 {
+	background-color: #6f97c79d;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1px 0;
+	padding: 0 0.75rem;
+}
+
+#week-forecast .timetable .day:last-of-type {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding-bottom: 5px;
+}
+
+#week-forecast .timetable .day h4 {
+	font-weight: 450;
+}
+
+#week-forecast .timetable .day span {
+	display: flex;
+	align-items: center;
+	gap: 4rem;
+}
+
+#week-forecast .timetable svg {
+	padding: 0.25rem 0;
 }
