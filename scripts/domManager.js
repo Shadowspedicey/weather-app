@@ -42,7 +42,7 @@ const domManager = (() => {
 				}
 			}
 			e.querySelector("h4").textContent = i == 0 ? "Now" : hourInfo.hour12format + ending;
-			e.querySelector("img").src = `../icons/${info.days[hourInfo.day].hours[hourInfo.hour].icon}.svg`
+			e.querySelector("img").src = `./../icons/${info.days[hourInfo.day].hours[hourInfo.hour].icon}.svg`
 			e.querySelector(".degree").textContent = info.days[hourInfo.day].hours[hourInfo.hour].temp;
 		});
 	}
@@ -50,7 +50,7 @@ const domManager = (() => {
 		weekForecastEl.querySelectorAll(".day").forEach((e, i) => {
 			const dayName = i == 0 ? "Today" : helper.getDayName(helper.addDays(new Date(), i));
 			e.querySelector("h4").textContent = dayName;
-			e.querySelector("img").src = `/weather-app/icons/${info.days[i].icon}.svg`;
+			e.querySelector("img").src = `./../icons/${info.days[i].icon}.svg`;
 			e.querySelector("p").textContent = info.days[i].temp;
 		});
 	}
